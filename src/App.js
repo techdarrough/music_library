@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import { DataContext } from './context/DataContext'
-
-function App() {
+import { SearchContext } from './context/SearchContext'
+// export function 
+export default function App() {
 	let [search, setSearch] = useState('')
 	let [message, setMessage] = useState('Search for Music!')
 	let [data, setData] = useState([])
@@ -30,10 +31,15 @@ function App() {
 		e.preventDefault()
 		setSearch(term)
 	}
-
+//react content
 	return (
-		<div>
-			<SearchBar handleSearch = {handleSearch}/>
+		<div className='App'>
+			<SearchContext.Provider value={{
+                term: searchInput,
+                handleSearch: handleSearch
+            }}>
+				<SearchBar />
+			</SearchContext.Provider>
 			{message}
 			<DataContext.Provider value={data}>
 				<Gallery />
@@ -42,4 +48,3 @@ function App() {
   	);
 }
 
-export default App;
