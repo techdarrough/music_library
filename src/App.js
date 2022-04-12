@@ -6,7 +6,7 @@ import AlbumView from './components/AlbumView'
 import ArtistView from './components/ArtistView'
 import { Fragment } from 'react/cjs/react.production.min'
 
-export default function App() {
+function App() {
 	let [search, setSearch] = useState('')
 	let [message, setMessage] = useState('Search for Music!')
 	let [data, setData] = useState([])
@@ -53,3 +53,4 @@ export default function App() {
   	);
 }
 
+export default App;
